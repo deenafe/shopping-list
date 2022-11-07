@@ -27,7 +27,22 @@ def display_available():
 
     print("****************************")
     print("      Available Items")
-    print("****************************\n")
+    print("****************************")
+
+    available = SHEET.worksheet("available").get_all_values()
+    available_items = available[0]
+    available_prices = available[1]
+    
+    available_dict = {}
+    for items, prices in zip(available_items, available_prices):
+        print(f"{items} (Price: {prices})")
+        
+    available_dict = dict(zip(available_items, available_prices))   
+    
+    return available_dict
+        
+
+
 
 
 
