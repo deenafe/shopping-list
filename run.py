@@ -23,7 +23,8 @@ def display_available():
     print("****************************\n\n")
 
     customer_name = input("Please enter your name: ")
-    print(f"\n\nHi {customer_name}. We offer the best quality of consumables and groceries. Please find below, the item presently available in our store.\n")
+    print(f"\n\nHi {customer_name}. We offer the best quality of consumables and groceries." 
+     + "Please find below, the item presently available in our store.\n")
 
     print("****************************")
     print("      Available Items")
@@ -40,10 +41,20 @@ def display_available():
     available_dict = dict(zip(available_items, available_prices))   
     
     return available_dict
-        
+
+
+
+def shopping_items(available):
+    """
+    Request input from user to start or exit shopping.
+    Takes input from user to select items to be purchased.
+    Checks if the items selected is available in store.
+    """
+    start_shopping = input("\n\nWould you like to start shopping now:(YES/NO) ")
+    added_items = input("Add items: ")
 
 
 
 
-
-display_available()
+available_in_store = display_available()
+shopping_items(available_in_store)
