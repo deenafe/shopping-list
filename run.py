@@ -42,11 +42,14 @@ def display_available():
     
     return available_dict
 
+def proceed_shopping():
+    """
+    Request input from user to start or exit shopping.
+    """
 
 
 def shopping_items(available):
     """
-    Request input from user to start or exit shopping.
     Takes input from user to select items to be purchased.
     Checks if the items selected is available in store.
     """
@@ -60,7 +63,11 @@ def shopping_items(available):
         elif added_items == "":
             print("You didn't add any items. Please select an item")
         else:
-            print('The item seleted is not available in our store')             
+            print('The item seleted is not available in our store')
+    elif start_shopping.upper() != "YES" or "NO":
+        print("Please type in either YES or NO")   
+    else:
+        print("Thanks for visiting our store and we hope you shop with us soon.")                      
         
 
 
