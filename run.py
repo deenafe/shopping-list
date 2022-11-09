@@ -46,32 +46,37 @@ def proceed_shopping():
     """
     Request input from user to start or exit shopping.
     """
-
-
-def shopping_items(available):
-    """
-    Takes input from user to select items to be purchased.
-    Checks if the items selected is available in store.
-    """
     start_shopping = input("\n\nWould you like to start shopping now:(YES/NO) ")
-    added_items = input("Add items: ")
-
     if start_shopping.upper() == "YES":
         print("\nPlease add the items you would like to purchase")
-        if added_items in available:
-            return True
-        elif added_items == "":
-            print("You didn't add any items. Please select an item")
-        else:
-            print('The item seleted is not available in our store')
-    elif start_shopping.upper() != "YES" or "NO":
-        print("Please type in either YES or NO")   
+    elif start_shopping.upper() == "":
+        print("Please type in either YES or NO")  
+    elif start_shopping.upper() == "NO":
+        print("Thanks for visiting our store and we hope you shop with us soon.")  
     else:
-        print("Thanks for visiting our store and we hope you shop with us soon.")                      
+        print("Please enter YES or NO")    
+       
+
+# def shopping_items(available):
+#     """
+#     Takes input from user to select items to be purchased.
+#     Checks if the items selected is available in store.
+#     """
+    
+#     added_items = input("Add items: ")
+
+    
+#         if added_items in available:
+#             return True
+#         elif added_items == "":
+#             print("You didn't add any items. Please select an item")
+#         else:
+#             print('The item seleted is not available in our store')
+                         
         
 
 
 
-
-available_in_store = display_available()
-shopping_items(available_in_store)
+display_available()
+proceed_shopping()
+# # shopping_items(available_in_store)
