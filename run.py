@@ -68,20 +68,32 @@ def shopping_items(available):
     #Return to this function to add while and exit statement
     # while True:
     added_items = []
+    added_quantity = []
     add_items = input("Add items: ")
-    if add_items in available:   
+    if add_items.title() in available:   
         print(f"Please select the quantity of {add_items} you wish to purchase ")
         added_items.append(add_items)
         print(added_items)
+        add_quantity = input("Add quantity: ")
+        added_quantity.append(add_quantity)
+        print(added_quantity)
+
     elif add_items == "":
         print("You didn't add any items. Please select an item\n")
     else:
         print('The item selected is not available in our store\n')
 
-    return added_items
+    return added_items, added_quantity
+
+
+# def shopping_quantity(available):
+#     """
+#     Takes input from user for quantity of each item selected.
+#     """
 
 
 
 available_in_store = display_available()
 proceed = proceed_shopping()
-shopping_items(available_in_store)
+list_of_items = shopping_items(available_in_store)
+
