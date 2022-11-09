@@ -53,6 +53,16 @@ def shopping_items(available):
     start_shopping = input("\n\nWould you like to start shopping now:(YES/NO) ")
     added_items = input("Add items: ")
 
+    if start_shopping.upper() == "YES":
+        print("\nPlease add the items you would like to purchase")
+        if added_items in available:
+            return True
+        elif added_items == "":
+            print("You didn't add any items. Please select an item")
+        else:
+            print('The item seleted is not available in our store')             
+        
+
 
 
 
