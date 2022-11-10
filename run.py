@@ -50,12 +50,13 @@ def proceed_shopping():
         start_shopping = input("\n\nWould you like to start shopping now:(YES/NO) ")    
         proceed_with_shopping = start_shopping.upper() == "YES"
         if start_shopping.upper() == "YES":
-            print("\nPlease add the items you would like to purchase\n")        
+            print("\nPlease add the items you would like to purchase\n")
+            break        
         elif start_shopping.upper() == "":
             print("Please type in either YES or NO")  
         elif start_shopping.upper() == "NO":
             print("Thanks for visiting our store and we hope you shop with us soon.")
-            break 
+            pass 
         #Call an exit function here 
         else:
             print("Please enter YES or NO") 
@@ -63,37 +64,33 @@ def proceed_shopping():
     return proceed_with_shopping      
        
 
-# def shopping_items(available):
-#     """
-#     Takes input from user to select items to be purchased.
-#     Checks if the items selected is available in store.
-#     """
-#     #Return to this function to add while and exit statement
-#     # while True:
-#     added_items = []
-#     added_quantity = []
-#     add_items = input("Add items: ")
-#     if add_items.title() in available:   
-#         print(f"Please select the quantity of {add_items} you wish to purchase ")
-#         added_items.append(add_items)
-#         print(added_items)
-#         add_quantity = input("Add quantity: ")
-#         added_quantity.append(add_quantity)
-#         print(added_quantity)
-
-#     elif add_items == "":
-#         print("You didn't add any items. Please select an item\n")
-#     else:
-#         print('The item selected is not available in our store\n')
-
-#     return added_items, added_quantity
+def shopping_items(available):
+    """
+    Takes input from user to select items to be purchased.
+    Checks if the items selected is available in store.
+    """
+    if proceed:
+        added_items = []
+        added_quantity = []
+        add_items = input("Add items: ")
+        if add_items.title() in available:
+            print(f"Please select the quantity of {add_items} you wish to purchase ")
+            added_items.append(add_items)
+            add_quantity = input("Add quantity: ")
+            added_quantity.append(add_quantity)
+        elif add_items == "":
+            print("You didn't add any items. Please select an item\n")
+        else:
+            print('The item selected is not available in our store\n')
+        
+    
+    return added_items, added_quantity
 
 
 
 
 available_in_store = display_available()
 proceed = proceed_shopping()
-print(proceed)
-# list_of_items = shopping_items(available_in_store)
+list_of_items = shopping_items(available_in_store)
 
 
