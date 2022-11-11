@@ -75,7 +75,7 @@ def shopping_items(available, proceed):
 
         if add_items.title() in available:
             add_quantity = int(input("Add quantity: "))
-            shopping_cart.update({add_items: {"Quantity":add_quantity, "sub total": 
+            shopping_cart.update({add_items: {"Quantity":add_quantity, "Sub total": 
             available[add_items.title()]*add_quantity}})
             print(shopping_cart)
         elif add_items == "":
@@ -87,15 +87,32 @@ def shopping_items(available, proceed):
         if proceed.upper() == "NO":
             # add elseif in case of invalid or blanks
             print("You have finished you shopping")
-            break 
+            break
         
     return shopping_cart
+
+
+def bill_summary(items_bought):
+    """
+    Prints out summary of items and quantity bought.
+    Prints out the subtotal for each items bought then it adds up
+    the subtotal for each item to get the total value of items bought.
+    """
+    print("******************")
+    print("     Bill Summary")
+    print("******************\n")
+    print("Item      Quantity       Subtotal")
+    total = 0
+    for key in items_bought:
+        print(f"{key}         {items_bought[key]['Quantity']} ")
+        {items_bought[key]['Sub total']}
 
 
 available_in_store = display_available()
 proceed_to_shopping = proceed_shopping()
 lists_of_items = shopping_items(available_in_store, proceed_to_shopping)
 print(lists_of_items)
+bill_summary(lists_of_items)
 
 
 
