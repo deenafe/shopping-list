@@ -69,16 +69,15 @@ def shopping_items(available, proceed):
     Takes input from user to select items to be purchased.
     Checks if the items selected is available in store.
     """
+    shopping_cart = {}
     while proceed:
-        added_items = []
-        added_quantity = []
         add_items = input("Add items: ")
 
         if add_items.title() in available:
-            print(f"Please select the quantity of {add_items} you wish to purchase ")
-            added_items.append(add_items)
-            add_quantity = input("Add quantity: ")
-            added_quantity.append(add_quantity)
+            add_quantity = int(input("Add quantity: "))
+            shopping_cart.update({add_items: {"Quantity":add_quantity, "sub total": 
+            available[add_items.title()]*add_quantity}})
+            print(shopping_cart)
         elif add_items == "":
             print("You didn't add any items. Please select an item\n")
         else:
@@ -86,15 +85,17 @@ def shopping_items(available, proceed):
         
         proceed = input("Do you wish to add more items (YES/NO): ")
         if proceed.upper() == "NO":
+            # add elseif in case of invalid or blanks
             print("You have finished you shopping")
             break 
         
-    return added_items, added_quantity
+    return shopping_cart
 
 
 available_in_store = display_available()
 proceed_to_shopping = proceed_shopping()
-shopping_items(available_in_store, proceed_to_shopping)
+lists_of_items = shopping_items(available_in_store, proceed_to_shopping)
+print(lists_of_items)
 
 
 
