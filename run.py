@@ -75,8 +75,11 @@ def shopping_items(available, proceed):
 
         if add_items.title() in available:
             add_quantity = int(input("Add quantity: "))
-            shopping_cart.update({add_items: {"Quantity":add_quantity, "Sub total": 
+            for key, value in available.items():
+                available[key] = float(value)
+            shopping_cart.update({add_items: {"Quantity":add_quantity, "Subtotal": 
             available[add_items.title()]*add_quantity}})
+            #round up subtoal to 2 decimal
             print(shopping_cart)
         elif add_items == "":
             print("You didn't add any items. Please select an item\n")
@@ -98,14 +101,16 @@ def bill_summary(items_bought):
     Prints out the subtotal for each items bought then it adds up
     the subtotal for each item to get the total value of items bought.
     """
-    print("******************")
+    print("************************")
     print("     Bill Summary")
-    print("******************\n")
+    print("************************\n")
     print("Item      Quantity       Subtotal")
     total = 0
     for key in items_bought:
-        print(f"{key}         {items_bought[key]['Quantity']} ")
-        {items_bought[key]['Sub total']}
+        print(f"{key}         {items_bought[key]['Quantity']}           {items_bought[key]['Subtotal']}")
+        subtotal = float(items_bought[key]['Subtotal'])
+        total = total + subtotal
+        print(total)
 
 
 available_in_store = display_available()
