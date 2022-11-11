@@ -105,10 +105,11 @@ def bill_summary(items_bought):
     print("     Bill Summary")
     print("************************\n")
     print("Item      Quantity       Subtotal")
+    
     total = 0
     for key in items_bought:
-        print(f"{key}         {items_bought[key]['Quantity']}           {items_bought[key]['Subtotal']}")
-        subtotal = float(items_bought[key]['Subtotal'])
+        subtotal = round(items_bought[key]['Subtotal'], 2)
+        print(f"{key}         {items_bought[key]['Quantity']}           {subtotal}")
         total = total + subtotal
         print(total)
 
