@@ -1,7 +1,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
-
 import pyfiglet
+import colorama
+from colorama import Fore, Back, Style
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -14,6 +15,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('price_list')
 
+
 def display_available():
     """
     Welcomes the customer to the online store.
@@ -24,8 +26,12 @@ def display_available():
     print(welcome)
 
     customer_name = input("Please enter your name: ")
-    print(f"\n\nHi {customer_name}. We offer the best quality consumables and groceries." 
-     + "Please find below, the item presently available in our store.\n")
+    print("\n")
+    print(
+          f'Hi {customer_name.title()}. '
+          'We offer the best quality consumables and groceries.'
+          'Please find below, the items presently available in our store.\n'
+        )
 
     print("****************************")
     print("      Available Items")
@@ -34,14 +40,15 @@ def display_available():
     available = SHEET.worksheet("available").get_all_values()
     available_items = available[0]
     available_prices = available[1]
-    
+
     available_dict = {}
     for items, prices in zip(available_items, available_prices):
         print(f"{items} (Price: {prices})")
-        
-    available_dict = dict(zip(available_items, available_prices))   
-    
+
+    available_dict = dict(zip(available_items, available_prices))
+
     return available_dict
+
 
 def proceed_shopping():
     """
@@ -55,15 +62,17 @@ def proceed_shopping():
             print("\nPlease add the items you would like to purchase\n")
             break
         elif start_shopping.upper() == "":
-            print("Please type in either YES or NO")
-        elif start_shopping.upper() == "NO":       
-             print("Thanks for visiting our store and we hope you shop with us soon.")
-             break
+            print(Fore.RED + "Please type in either YES or NO")
+            print(Style.RESET_ALL)
+        elif start_shopping.upper() == "NO":
+            print("Thanks for visiting our store and we hope you shop with us soon.")
+            break
         else:
-            print("You entered an invalid word. Please enter YES or NO") 
+            print(Fore.RED + "You entered an invalid word. Please enter YES or NO")
+            print(Style.RESET_ALL)
 
-    return proceed_with_shopping    
-       
+    return proceed_with_shopping
+
 
 def shopping_items(available, proceed):
     """
@@ -75,24 +84,27 @@ def shopping_items(available, proceed):
         add_items = input("Add items: ")
 
         if add_items.title() in available:
-            add_quantity = int(input("Add quantity: "))
+            add_quantity = int(input(f"How many {add_items.title()} do you want to purchase: "))
+            print("\n")
             for key, value in available.items():
                 available[key] = float(value)
-            shopping_cart.update({add_items: {"Quantity":add_quantity, "Subtotal": 
+            shopping_cart.update({add_items: {"Quantity":add_quantity, "Subtotal":
             available[add_items.title()]*add_quantity}})
             #round up subtoal to 2 decimal
-            print(shopping_cart)
+            # print(shopping_cart)
         elif add_items == "":
-            print("You didn't add any items. Please select an item\n")
+            print(Fore.RED + "You didn't add any items. Please select an item\n")
+            print(Style.RESET_ALL)
         else:
-            print('The item selected is not available in our store\n')
-        
+            print(Fore.RED + 'The item selected is not available in our store\n')
+            print(Style.RESET_ALL)
+
         proceed = input("Do you wish to add more items (YES/NO): ")
         if proceed.upper() == "NO":
             # add elseif in case of invalid or blanks
             print("You have finished you shopping")
             break
-        
+
     return shopping_cart
 
 
@@ -102,23 +114,23 @@ def bill_summary(items_bought):
     Prints out the subtotal for each items bought then it adds up
     the subtotal for each item to get the total value of items bought.
     """
+
     print("************************")
     print("     Bill Summary")
     print("************************\n")
-    print("Item      Quantity       Subtotal")
-    
+    print("Item           Quantity        Subtotal")
+
     total = 0
     for key in items_bought:
         subtotal = round(items_bought[key]['Subtotal'], 2)
         print(f"{key}         {items_bought[key]['Quantity']}           {subtotal}")
         total = total + subtotal
-        print(total)
+    print(f"Your total bill is {round(total, 2)}")
 
 
 available_in_store = display_available()
 proceed_to_shopping = proceed_shopping()
 lists_of_items = shopping_items(available_in_store, proceed_to_shopping)
-print(lists_of_items)
 bill_summary(lists_of_items)
 
 
