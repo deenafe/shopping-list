@@ -29,7 +29,7 @@ def display_available():
     welcome = pyfiglet.figlet_format("Welcome  to Deen's  Store")
     print(welcome)
 
-    customer_name = input("Please enter your name: ")
+    customer_name = input("Please enter your name:\n ")
     print("\n")
     print(
           f'Hi {customer_name.title()}. '
@@ -60,7 +60,7 @@ def proceed_shopping():
     """
     while True:
         start_shopping = input("\n\nWould you like to start " +
-                               "shopping now:(YES/NO) ")
+                               "shopping now:(YES/NO)\n ")
         proceed_with_shopping = start_shopping.upper() == "YES"
 
         if proceed_with_shopping:
@@ -88,11 +88,11 @@ def shopping_items(available, proceed):
     """
     shopping_cart = {}
     while proceed:
-        add_items = input("Add items: ")
+        add_items = input("Add items:\n ")
 
         if add_items.title() in available:
             add_quantity = int(input(f'How many {add_items.title()}'
-                                     ' do you want to purchase: '))
+                                     ' do you want to purchase:\n '))
             print("\n")
             for key, value in available.items():
                 available[key] = float(value)
@@ -108,11 +108,11 @@ def shopping_items(available, proceed):
                   Please select an item\n""")
             print(Style.RESET_ALL)
         else:
-            print(Fore.RED + """The item selected is not 
+            print(Fore.RED + """The item selected is not
                  available in our store\n""")
             print(Style.RESET_ALL)
 
-        proceed = input("Do you wish to add more items (YES/NO): ")
+        proceed = input("Do you wish to add more items (YES/NO):\n ")
         if proceed.upper() == "NO":
             print("You have finished you shopping")
             break
