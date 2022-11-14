@@ -142,10 +142,17 @@ def bill_summary(items_bought):
     print(f"Your total bill is {round(total, 2)}")
 
 
+def main():
+    """
+    Run all functions
+    """
 available_in_store = display_available()
 proceed_to_shopping = proceed_shopping()
 lists_of_items = shopping_items(available_in_store, proceed_to_shopping)
 bill_summary(lists_of_items)
+
+main()
+
 
 
 
