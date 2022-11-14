@@ -1,9 +1,12 @@
+""" API for Google Sheets."""
 import gspread
 from google.oauth2.service_account import Credentials
+
 import pyfiglet
+
 import colorama
-from colorama import Fore, Back, Style
-from tabulate import tabulate
+from colorama import Fore, Style
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -56,7 +59,8 @@ def proceed_shopping():
     Request input from user to start or exit shopping.
     """
     while True:
-        start_shopping = input("\n\nWould you like to start shopping now:(YES/NO) ")
+        start_shopping = input("\n\nWould you like to start " +
+                               "shopping now:(YES/NO) ")
         proceed_with_shopping = start_shopping.upper() == "YES"
 
         if proceed_with_shopping:
@@ -66,10 +70,12 @@ def proceed_shopping():
             print(Fore.RED + "Please type in either YES or NO")
             print(Style.RESET_ALL)
         elif start_shopping.upper() == "NO":
-            print("Thanks for visiting our store and we hope you shop with us soon.")
+            print("""Thanks for visiting our store and we
+                  hope you shop with us soon.""")
             break
         else:
-            print(Fore.RED + "You entered an invalid word. Please enter YES or NO")
+            print(Fore.RED + """You entered an invalid word.
+                  Please enter YES or NO""")
             print(Style.RESET_ALL)
 
     return proceed_with_shopping
@@ -85,24 +91,29 @@ def shopping_items(available, proceed):
         add_items = input("Add items: ")
 
         if add_items.title() in available:
-            add_quantity = int(input(f"How many {add_items.title()} do you want to purchase: "))
+            add_quantity = int(input(f'How many {add_items.title()}'
+                                     ' do you want to purchase: '))
             print("\n")
             for key, value in available.items():
                 available[key] = float(value)
-            shopping_cart.update({add_items: {"Quantity":add_quantity, "Subtotal":
-            available[add_items.title()]*add_quantity}})
-            #round up subtoal to 2 decimal
-            # print(shopping_cart)
+            shopping_cart.update(
+                {add_items:
+                    {"Quantity": add_quantity,
+                     "Subtotal": available[add_items.title()] *
+                        add_quantity}
+                 }
+            )
         elif add_items == "":
-            print(Fore.RED + "You didn't add any items. Please select an item\n")
+            print(Fore.RED + """You didn't add any items.
+                  Please select an item\n""")
             print(Style.RESET_ALL)
         else:
-            print(Fore.RED + 'The item selected is not available in our store\n')
+            print(Fore.RED + """The item selected is not 
+                 available in our store\n""")
             print(Style.RESET_ALL)
 
         proceed = input("Do you wish to add more items (YES/NO): ")
         if proceed.upper() == "NO":
-            # add elseif in case of invalid or blanks
             print("You have finished you shopping")
             break
 
