@@ -3,6 +3,7 @@ from google.oauth2.service_account import Credentials
 import pyfiglet
 import colorama
 from colorama import Fore, Back, Style
+from tabulate import tabulate
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -118,7 +119,9 @@ def bill_summary(items_bought):
     print("************************")
     print("     Bill Summary")
     print("************************\n")
-    print("Item           Quantity        Subtotal")
+    # print("Item           Quantity        Subtotal")
+    bill_headers = ['Item', 'Quantity', 'Subtotal']
+    print(f'{bill_headers[0]: <10}{bill_headers[1]: <15}{bill_headers[2]}')
 
     total = 0
     for key in items_bought:
