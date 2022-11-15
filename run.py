@@ -24,7 +24,7 @@ def welcome():
     """
     Welcomes the customer to the online store.
     """
-    welcome = pyfiglet.figlet_format("Welcome  to Deen's  Store")
+    welcome = pyfiglet.figlet_format("Welcome  to Deen's  Store", font="standard", justify="center")
     print(welcome)
 
     customer_name = input("Please enter your name:\n ")
