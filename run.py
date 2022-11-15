@@ -169,7 +169,3 @@ lists_of_items = shopping_items(available_in_store, proceed_to_shopping)
 bill_summary(lists_of_items)
 
 main()
-
-
-
-

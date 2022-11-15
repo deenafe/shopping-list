@@ -87,3 +87,51 @@ With each item selection, the user is also required to state the quantity they w
 
 * A total bill is then printed to the user highlighted in green.
 
+
+### Future Development & Features Left to Implement
+
+* When the user opts to stop adding items to their shopping cart by entering NO to the YES or NO input request, instead of proceeding to calculate their final bill, I would like to have another prompt message printed to the user, asking the user if they are sure they are done with adding items with another YES or NO input request. To reconfirm they wish to quit, they should input NO and if they still want to continue adding items they can input YES. This reconfirmation prompt message will allow the user to reconsider if they wish to add more items before checking out to the bill summary.
+
+* Every store owner will want to have records of goods sold, so it would be very useful to have data of the from the bill summary posted to a Google spreadsheet, with following details in the first row of the worksheet: Customer Name, Item Bought, Quantity Bought, Amount, Date. This information would be very helpful to the store owner/management.
+
+**Flow Control**
+
+The flow of execution of the program captures how statements, conditions and function calls are executed in sequence one after another to maintain the order of the program. The flow control chart of the program was laid out and structured to aid in the design of the control flow statements such as if-elif-else statements, while loops and for loops.  This also allowed the design of the user input validation checks to be visually clear before the code was written.
+
+![](/assets/images/deens-flowchart.jpg)
+
+
+**Fonts**
+[Pyfiglet](https://pypi.org/project/pyfiglet/0.7/) was installed and import pyfiglet was used to generate ASCII art for the title message.  Pyfiglet was added to requirements.txt for deployment to Heroku.
+
+**Colour**
+To change the font colour and background colour of some words [Colorama](https://pypi.org/project/colorama/) was imported.  Colorama was added to requirements.txt then for deployment.
+
+
+## Libraries & Technology Used
+
+*   gspread
+
+The gspread library was imported to make use of the Credential class and to enable interaction with Google sheet API credentials on the creds.json file.
+
+*   [Pyfiglet](https://pypi.org/project/pyfiglet/0.7/) 
+
+This was used to add ASCII art to the title message
+
+* [Colorama](https://pypi.org/project/colorama/) 
+
+This was used to add colour to fonts and provide visual notification to the user.
+
+*   [LucidCharts](https://www.lucidchart.com/) 
+
+This was used to create the Flowchart.
+
+*   Windows Sniiping tool.
+
+THis was used to screenshot and save images of the running program and flow chart. 
+
+
+
+
+
+
