@@ -24,18 +24,16 @@ def welcome():
     """
     Welcomes the customer to the online store.
     """
-    welcome = pyfiglet.figlet_format("Welcome  to Deen's  Store", font="standard", justify="center")
-    print(welcome)
+    welcome_to_store = pyfiglet.figlet_format("Welcome  to Deen's  Store", font="standard", justify="center")
+    print(welcome_to_store)
 
     customer_name = input("Please enter your name:\n ")
     print("\n")
     if customer_name == "":
         customer_name = input(Fore.RED + "Please enter a name:\n ")
         print(Style.RESET_ALL)
-    else:
-        display_available()
 
-    return customer_name        
+    return customer_name
 
 
 def display_available(customer):
@@ -46,6 +44,7 @@ def display_available(customer):
 
     print(
           f'Hi {customer.title()}. '
+          'Thanks for choosing to shop with Deen"s Store.'
           'We offer the best quality consumables and groceries.'
           'Please find below, the items presently available in our store.\n'
         )
@@ -85,7 +84,7 @@ def proceed_shopping():
         elif start_shopping.upper() == "NO":
             print("""Thanks for visiting our store and we
                   hope you shop with us soon.""")
-            break
+            quit()
         else:
             print(Fore.RED + """You entered an invalid word.
                   Please enter YES or NO""")

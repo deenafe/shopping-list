@@ -29,3 +29,5 @@ With each item selection, the user is also required to state the quantity they w
 * Standard Font was used for the title as it is large and has nice spacing and clarity of letters. It was centred to give a nice clean layout too.
 
 * Below the title is a message to the user to enter their name. This prompts the user to start shopping on the digital kiosk.
+
+![](/assets/images/store-title.png)
