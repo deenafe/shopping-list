@@ -57,6 +57,16 @@ With each item selection, the user is also required to state the quantity they w
 
 * If the user's answer is NO, then a message is printed thanking the user for visiting the store and imploring them to come back another time to shop at the store.
 
+![](/assets/images/start_shopping.png)
+
+![](/assets/images/start_shopping_error1.png)
+
+![](/assets/images/start_shopping_error1.png)
+
+![](/assets/images/start_shopping_no.png)
+
+
+
 
 **Add Items Input Validation:**
 

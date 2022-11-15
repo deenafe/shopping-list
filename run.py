@@ -4,7 +4,6 @@ from google.oauth2.service_account import Credentials
 
 import pyfiglet
 
-import colorama
 from colorama import Fore, Style
 
 
@@ -81,8 +80,8 @@ def proceed_shopping():
             print(Fore.RED + "Please type in either YES or NO")
             print(Style.RESET_ALL)
         elif start_shopping.upper() == "NO":
-            print("""Thanks for visiting our store and we
-                  hope you shop with us soon.""")
+            print("Thanks for visiting our store." +
+                  " We hope you shop with us soon.\n")
             quit()
         else:
             print(Fore.RED + """You entered an invalid word.
@@ -143,14 +142,13 @@ def bill_summary(items_bought):
     print("************************")
     print("     Bill Summary")
     print("************************\n")
-    # print("Item           Quantity        Subtotal")
     bill_headers = ['Item', 'Quantity', 'Subtotal']
     print(f'{bill_headers[0]: <10}{bill_headers[1]: <15}{bill_headers[2]}')
 
     total = 0
     for key in items_bought:
         subtotal = round(items_bought[key]['Subtotal'], 2)
-        print(f"{key}         {items_bought[key]['Quantity']}           {subtotal}")
+        print(f"{key}\t\t{items_bought[key]['Quantity']}\t  {subtotal}")
         total = total + subtotal
     print(Fore.GREEN + f"Your total bill is {round(total, 2)}")
 
@@ -159,12 +157,11 @@ def main():
     """
     Run all functions
     """
+    name_of_customer = welcome()
+    available_in_store = display_available(name_of_customer)
+    proceed_to_shopping = proceed_shopping()
+    lists_of_items = shopping_items(available_in_store, proceed_to_shopping)
+    bill_summary(lists_of_items)
 
-
-name_of_customer = welcome()
-available_in_store = display_available(name_of_customer)
-proceed_to_shopping = proceed_shopping()
-lists_of_items = shopping_items(available_in_store, proceed_to_shopping)
-bill_summary(lists_of_items)
 
 main()
