@@ -42,3 +42,12 @@ With each item selection, the user is also required to state the quantity they w
 * After the user inputs a name, they are greeted with a personalized welcome message. The Welcome message also seeks to assure the user that the products available in the store are of good quality.  
 
 * Below the welcome message is a list of all items and prices currently available in the store. The items and prices are obtained from a spreadsheet linked with an API. Any changes made to the store's spreadsheet that updates the list of items available and prices would reflect on the Available Items displayed on the self service kiosk.
+
+
+**Start Shopping Input Validation:**
+
+* After going through the store's available items and prices, the user is then asked if they will like to start shopping by indicating YES or NO
+
+* If the user input is neither YES or NO, an error message highlighted in red is printed informing the user that an invalid word was entered. If the user simply presses enter without inputting YES or NO, an error message highlighted in red is printed asking the user to type in either YES or NO.
+
+* If the user's answer is NO, then a message is printed thanking the user for visiting the store and imploring them to come back another time to shop at the store.
