@@ -51,3 +51,18 @@ With each item selection, the user is also required to state the quantity they w
 * If the user input is neither YES or NO, an error message highlighted in red is printed informing the user that an invalid word was entered. If the user simply presses enter without inputting YES or NO, an error message highlighted in red is printed asking the user to type in either YES or NO.
 
 * If the user's answer is NO, then a message is printed thanking the user for visiting the store and imploring them to come back another time to shop at the store.
+
+
+**Add Items Input Validation:**
+
+* After a user agrees to start shopping by inputting YES, a message is printed asking the user to add the items they wish to purchase from the store. Then an input request is made to enter the first item they will like to purchase.
+
+* If a user simply presses enter without typing in any item, an error message highlighted in red is printed informing the user they didn't add any items. Then an input request is made to ask if the user wishes to add other items.
+
+* If a user enters an item that is not available in the store, an error message highlighted in red is printed informing the user that the added item is not available in the store. Then an input request is made to ask if the user wishes to add other items.
+
+**Add Quantity Input:**
+
+* Any added item is checked for in-store availability and if available, the user is asked to input the quantity they wish to purchase for the added item.
+
+* Upon inputting the quantity for a selected item, the user is asked if they wish to continue shopping by a YES or NO input to add another item. If the type in YES they get prompted to add an item, then quantity for the entered item.
