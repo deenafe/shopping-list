@@ -43,6 +43,11 @@ With each item selection, the user is also required to state the quantity they w
 
 * Below the welcome message is a list of all items and prices currently available in the store. The items and prices are obtained from a spreadsheet linked with an API. Any changes made to the store's spreadsheet that updates the list of items available and prices would reflect on the Available Items displayed on the self service kiosk.
 
+![](/assets/images/name_error.png)
+
+![](/assets/images/welcome_message.png)
+
+![](/assets/images/available_items.png)
 
 **Start Shopping Input Validation:**
 
@@ -128,7 +133,7 @@ This was used to create the Flowchart.
 
 *   Windows Sniiping tool.
 
-THis was used to screenshot and save images of the running program and flow chart. 
+This was used to screenshot and save images of the running program and flow chart. 
 
 
 

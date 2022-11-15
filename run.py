@@ -28,7 +28,6 @@ def welcome():
     print(welcome_to_store)
 
     customer_name = input("Please enter your name:\n ")
-    print("\n")
     if customer_name == "":
         customer_name = input(Fore.RED + "Please enter a name:\n ")
         print(Style.RESET_ALL)
@@ -43,9 +42,9 @@ def display_available(customer):
     """
 
     print(
-          f'Hi {customer.title()}. '
-          'Thanks for choosing to shop with Deen"s Store.'
-          'We offer the best quality consumables and groceries.'
+          f'\nHi {customer.title()}. '
+          'Thanks for choosing to shop with Deen"s Store. '
+          'We offer the best quality consumables and groceries. '
           'Please find below, the items presently available in our store.\n'
         )
 
