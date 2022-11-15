@@ -43,23 +43,12 @@ def display_available(customer):
     Request customer to input name, then displays items available in the store.
     Gets the available items from a worksheet.
     """
-    welcome = pyfiglet.figlet_format("Welcome  to Deen's  Store")
-    print(welcome)
 
-    customer_name = input("Please enter your name:\n ")
-    print("\n")
-    if customer_name == "":
-        print("Please input a name")
-        customer_name
-    else:
-        print(
-          f'Hi {customer_name.title()}. '
+    print(
+          f'Hi {customer.title()}. '
           'We offer the best quality consumables and groceries.'
           'Please find below, the items presently available in our store.\n'
         )
-
-
-    
 
     print("****************************")
     print("      Available Items")
