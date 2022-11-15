@@ -66,3 +66,24 @@ With each item selection, the user is also required to state the quantity they w
 * Any added item is checked for in-store availability and if available, the user is asked to input the quantity they wish to purchase for the added item.
 
 * Upon inputting the quantity for a selected item, the user is asked if they wish to continue shopping by a YES or NO input to add another item. If the type in YES they get prompted to add an item, then quantity for the entered item.
+
+**Continue Shopping Feedback:**
+
+* After each item and quantity input, the user can continue adding items till they input NO to stop adding more items.
+
+* The price of each item added is multiplied by the quantity entered, to get the Sub-total for each item added. For example:
+   Bread (Price: 3.15)
+   If the quantity of bread entered is 3. The total amount for the added    item will be 3.15 x 3 = 9.45
+
+
+**Finished Shopping Feedback:**
+
+* Once a user enters NO to the input request for continue adding other items, it means the user is done shopping and a message is printed informing the user that they having finished adding items to their shopping cart.
+
+
+**Final Bill:**
+
+* With the user done adding items, the total bill is calculated by adding the subtotals for all the added items. The final bill summary is printed to displaying to the user in rows and columns, the items bought, quantity for each items bought and the sub total for each items bought. 
+
+* A total bill is then printed to the user highlighted in green.
+
