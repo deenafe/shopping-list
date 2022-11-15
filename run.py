@@ -104,7 +104,8 @@ def shopping_items(available, proceed):
 
         if add_items.title() in available:
             add_quantity = int(input(f'How many {add_items.title()}'
-                                     ' do you want to purchase:\n '))
+                                     ' do you want to purchase'
+                                     ' (Please input numbers only):\n '))
             print("\n")
             for key, value in available.items():
                 available[key] = float(value)
@@ -126,7 +127,8 @@ def shopping_items(available, proceed):
 
         proceed = input("Do you wish to add more items (YES/NO):\n ")
         if proceed.upper() == "NO":
-            print("You have finished you shopping")
+            print("\n")
+            print("You have finished adding items to your shopping cart")
             break
 
     return shopping_cart
@@ -151,7 +153,7 @@ def bill_summary(items_bought):
         subtotal = round(items_bought[key]['Subtotal'], 2)
         print(f"{key}         {items_bought[key]['Quantity']}           {subtotal}")
         total = total + subtotal
-    print(f"Your total bill is {round(total, 2)}")
+    print(Fore.GREEN + f"Your total bill is {round(total, 2)}")
 
 
 def main():

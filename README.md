@@ -31,3 +31,14 @@ With each item selection, the user is also required to state the quantity they w
 * Below the title is a message to the user to enter their name. This prompts the user to start shopping on the digital kiosk.
 
 ![](/assets/images/store-title.png)
+
+
+
+
+**Name Input Section:**
+
+* If the user presses enter without inputting a name, another input message with a red text colour will display alerting the user that a name must be entered.
+
+* After the user inputs a name, they are greeted with a personalized welcome message. The Welcome message also seeks to assure the user that the products available in the store are of good quality.  
+
+* Below the welcome message is a list of all items and prices currently available in the store. The items and prices are obtained from a spreadsheet linked with an API. Any changes made to the store's spreadsheet that updates the list of items available and prices would reflect on the Available Items displayed on the self service kiosk.
