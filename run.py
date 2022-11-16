@@ -2,10 +2,9 @@
 import gspread
 from google.oauth2.service_account import Credentials
 
-""" To add ASCII Art to project title."""
+
 import pyfiglet
 
-""" To add colour contrast to words."""
 from colorama import Fore, Style
 
 
