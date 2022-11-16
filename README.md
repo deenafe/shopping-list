@@ -198,6 +198,8 @@ This was used to screenshot and save images of the running program and flow char
     *  Add Quantity:
     To test the add quantity input, a blank is inputted by pressing the enter key without entering a word. Then a random alphabet or word was entered to ensure errors were caught and handled appropriately.
 
+*   The README.md was proofread, using Microsoft Office spell check and all links were checked before final submission.    
+
 
 
 
