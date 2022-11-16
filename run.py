@@ -101,19 +101,25 @@ def shopping_items(available, proceed):
         add_items = input("Add items:\n ")
 
         if add_items.title() in available:
-            add_quantity = int(input(f'How many {add_items.title()}'
-                                     ' do you want to purchase'
-                                     ' (Please input numbers only):\n '))              
-            print("\n")
-            for key, value in available.items():
-                available[key] = float(value)
-            shopping_cart.update(
-                {add_items:
-                    {"Quantity": add_quantity,
-                     "Subtotal": available[add_items.title()] *
-                        add_quantity}
-                 }
-            )
+            # add_quantity = input(f'How many {add_items.title()}'
+            #                      ' do you want to purchase'
+            #                      ' (Please input numbers only):\n ')
+            try:
+                add_quantity = int(input('Please enter a positive number:\n'))
+            except ValueError:
+                print(f'You entered a Non-Number.')
+                add_quantity = int(input('Please enter a positive number:\n'))
+                
+            # print("\n")
+            # for key, value in available.items():
+            #     available[key] = float(value)
+            # shopping_cart.update(
+            #     {add_items:
+            #         {"Quantity": add_quantity,
+            #          "Subtotal": available[add_items.title()] *
+            #             add_quantity}
+            #      }
+            # )
         elif add_items == "":
             print(Fore.RED + """You didn't add any items.
                   Please select an item\n""")
@@ -123,27 +129,11 @@ def shopping_items(available, proceed):
                              " available in our store\n""")
             print(Style.RESET_ALL)
 
-        add_more = input("Do you wish to add more items (YES/NO):\n ")
-        if add_more.upper() == "NO":
+        proceed = input("Do you wish to add more items (YES/NO):\n ")
+        if proceed.upper() == "NO":
             print("\n")
             print("You have finished adding items to your shopping cart\n")
-            break
-        elif add_more == "":
-            print(Fore.RED + "Please enter either YES or NO")
-            print(Style.RESET_ALL)
-            print("\n")
-            proceed = input("Do you wish to add more items (YES/NO):\n ")
-        else:
-            print(Fore.RED + "Please enter either YES or NO")
-            print(Style.RESET_ALL)
-            print("\n")
-            proceed = input("Do you wish to add more items (YES/NO):\n ")
-
-
-        # if proceed.upper() == "NO":
-        #     print("\n")
-        #     print("You have finished adding items to your shopping cart\n")
-        #     break
+            break 
 
     return shopping_cart
 
