@@ -2,8 +2,10 @@
 import gspread
 from google.oauth2.service_account import Credentials
 
+""" To add ASCII Art to project title."""
 import pyfiglet
 
+""" To add colour contrast to words."""
 from colorama import Fore, Style
 
 
@@ -97,6 +99,9 @@ def shopping_items(available, proceed):
     """
     Takes input from user to select items to be purchased.
     Checks if the items selected is available in store.
+    Add items selected and quantity selected to a nested dictionary
+    Calculates the subtotal for each item added
+    Checkout from shopping after selecting all items needed
     """
     shopping_cart = {}
     while proceed:
