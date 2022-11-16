@@ -131,6 +131,8 @@ With each item selection, the user is also required to state the quantity they w
 
 * When the user opts to stop adding items to their shopping cart by entering NO to the YES or NO input request, instead of proceeding to calculate their final bill, I would like to have another prompt message printed to the user, asking the user if they are sure they are done with adding items with another YES or NO input request. To reconfirm if they wish to quit, they should input NO and if they still want to continue adding items they can input YES. This prompt message will allow the user to reconsider if they wish to add more items before checking out to the bill summary.
 
+* The Input request to add more items to the shopping cart needs to be handle blank inputs such that any input that's not YES or NO would print an error and make another input request to the user to enter YES or NO, instead of proceeding to calculate the user's final bill. 
+
 * Every store owner will want to have records of goods sold, so it would be very useful to have data from the bill summary posted to a Google spreadsheet, to be populated with the following details as headers in the first row of the worksheet: 
 
    * Customer Name
@@ -230,6 +232,11 @@ This is the developer environment where the code for this project was written, a
 
 
 ### Unfixed Bugs
+
+* Do you wish to add more items (YES/NO):
+    
+   * During testing, I discovered that if a blank is entered for this Input, it calaculates the total bill and prints the Bill Summary. As mentioned in the Features Left to Implement, the project code has to be updated to handle blank inputs to this request. 
+
 
 
 ### Validator Testing
