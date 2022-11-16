@@ -61,7 +61,7 @@ With each item selection, the user is also required to state the quantity they w
 
 ![](/assets/images/start_shopping_error1.png)
 
-![](/assets/images/start_shopping_error1.png)
+![](/assets/images/start_shopping_error2.png)
 
 ![](/assets/images/start_shopping_no.png)
 
@@ -76,11 +76,23 @@ With each item selection, the user is also required to state the quantity they w
 
 * If a user enters an item that is not available in the store, an error message highlighted in red is printed informing the user that the added item is not available in the store. Then an input request is made to ask if the user wishes to add other items.
 
+![](/assets/images/add_items.png)
+
+![](/assets/images/add_items_empty.png)
+
+![](/assets/images/add_items_unavailable.png)
+
+
 **Add Quantity Input:**
 
 * Any added item is checked for in-store availability and if available, the user is asked to input the quantity they wish to purchase for the added item.
 
 * Upon inputting the quantity for a selected item, the user is asked if they wish to continue shopping by a YES or NO input to add another item. If the type in YES they get prompted to add an item, then quantity for the entered item.
+
+![](/assets/images/add_quantity.png)
+
+![](/assets/images/more_items.png)
+
 
 **Continue Shopping Feedback:**
 
@@ -88,12 +100,16 @@ With each item selection, the user is also required to state the quantity they w
 
 * The price of each item added is multiplied by the quantity entered, to get the Sub-total for each item added. For example:
    Bread (Price: 3.15)
-   If the quantity of bread entered is 3. The total amount for the added    item will be 3.15 x 3 = 9.45
+   If the quantity of bread entered is 3. The total amount for the added item will be 3.15 x 3 = 9.45
+
+   ![](/assets/images/continue_shopping.png)
 
 
 **Finished Shopping Feedback:**
 
 * Once a user enters NO to the input request for continue adding other items, it means the user is done shopping and a message is printed informing the user that they having finished adding items to their shopping cart.
+
+![](/assets/images/finish_shopping.png)
 
 
 **Final Bill:**
@@ -101,6 +117,8 @@ With each item selection, the user is also required to state the quantity they w
 * With the user done adding items, the total bill is calculated by adding the subtotals for all the added items. The final bill summary is printed to displaying to the user in rows and columns, the items bought, quantity for each items bought and the sub total for each items bought. 
 
 * A total bill is then printed to the user highlighted in green.
+
+![](/assets/images/total_bill.png)
 
 
 ### Future Development & Features Left to Implement
