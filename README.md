@@ -24,9 +24,9 @@ With each item selection, the user is also required to state the quantity they w
 
 **Title Section:**
 
-* [Pyfiglet](https://www.geeksforgeeks.org/python-ascii-art-using-pyfiglet-module/#:~:text=pyfiglet%20takes%20ASCII%20text%20and,pyfiglet%20module%20%3A%20pip%20install%20pyfiglet) was installed and import pyfiglet was used to generate ASCII art for the title displaying the name of the store.
+* [Pyfiglet](https://www.geeksforgeeks.org/python-ascii-art-using-pyfiglet-module/#:~:text=pyfiglet%20takes%20ASCII%20text%20and,pyfiglet%20module%20%3A%20pip%20install%20pyfiglet) was installed and pyfiglet was used to generate ASCII art for the title displaying the name of the store.
 
-* Standard Font was used for the title as it is large and has nice spacing and clarity of letters. It was centred to give a nice clean layout too.
+* The title fonts were centered to give a nice clean layout too.
 
 * Below the title is a message to the user to enter their name. This prompts the user to start shopping on the digital kiosk.
 
@@ -106,7 +106,7 @@ With each item selection, the user is also required to state the quantity they w
 
 * The price of each item added is multiplied by the quantity entered, to get the Sub-total for each item added. For example:
    Bread (Price: 3.15)
-   If the quantity of bread entered is 3. The total amount for the added item will be 3.15 x 3 = 9.45
+   If the quantity of bread entered is 3. The total amount for the added item will be 3.15 x 3 = 9.45. This information is not printed to the terminal but provided the basis for calculating the bill summary after user is done shopping.
 
    ![](/assets/images/continue_shopping.png)
 
@@ -156,11 +156,11 @@ The flow of execution of the program captures how statements, conditions and fun
 To change the font colour and background colour of some words [Colorama](https://pypi.org/project/colorama/) was imported.  Colorama was added to requirements.txt then for deployment.
 
 
-## Libraries & Technology Used
+## Libraries & Technologies Used
 
 *   gspread
 
-The gspread library was imported to make use of the Credential class and to enable interaction with Google sheet API credentials on the creds.json file.
+The gspread library was imported to make use of the Credentials class and to enable interaction with Google sheet API credentials on the creds.json file.
 
 *   [Pyfiglet](https://pypi.org/project/pyfiglet/0.7/) 
 
@@ -176,7 +176,16 @@ This was used to create the Flowchart.
 
 *   Windows Snipping tool.
 
-This was used to screenshot and save images of the running program and flow chart. 
+This was used to screenshot and save images of the running program and flow chart.
+
+*   Github
+
+This was used to host the Code for the project and the project was project was developed utilising the [Code Institute Template]( https://github.com/Code-Institute-Org/python-essentials-template).
+
+*   Gitpod Workspace
+
+This is the developer environment where the code for this project was written, added, committed and pushed to the Github repository.
+
 
 
 ## Testing
@@ -201,7 +210,87 @@ This was used to screenshot and save images of the running program and flow char
 *   The README.md was proofread, using Microsoft Office spell check and all links were checked before final submission.    
 
 
+## Bugs
+
+### Identified Bugs
+
+* ValueError: invalid literal for int() with base 10:
+
+    * During testing, I discovered that the add_quantity Input would throw up an error and exit the program if a blank Input or Non-Number is entered.
+
+>
+>  File "run.py", line 104, in shopping_items
+>
+>   add_quantity = int(input(f'How many {add_items.title()}'
+>
+> ValueError: invalid literal for int() with base 10: 'w'
 
 
+    To resolve this, I used a try/except statement to handle the error and alert the user if a Non-number or blank Input is entered. Following the message alerting the user to the error, an Input request is made again, this time providing examples of a number.
 
 
+### Unfixed Bugs
+
+
+### Validator Testing
+
+A PEP8 validator already installed on my Gitpod Workspace was used for code validation. The following steps were taken to validate the code.
+
+*  Pressed Ctrl+Shift+P on the Keyboard
+* On the search Bar that appeared in the workspace, typed in the word > Linter
+* From the options that appeared below the Search Bar, clicked on > Python: Select Linter
+* Selected > pycodestyle from the options displayed.
+
+The code showed no errors after the above mentioned steps were done.
+
+
+## Deployment
+
+The site was deployed via [Heroku]( https://id.heroku.com/login), and the live link can be found here: [Deen's Store](https://deens-store.herokuapp.com/) 
+
+Before deploying to Heroku pip3 freeze > requirements.txt was used to add dependencies and imports for deployment.
+
+1.	Log in to [Heroku]( https://id.heroku.com/login) or create an account if required.
+2.	Then, click the button labelled **New** from the dashboard in the top right corner and from the drop-down menu select **Create New App**.
+3.	You must enter a unique app name, (I used mastermind-code-breaker).
+4.	Next, select your region, (I chose Europe as I am in Ireland).
+5.	Click on the **Create App** button.
+6.	The next page you will see is the project’s Deploy Tab.  Click on the **Settings Tab** and scroll down to **Config Vars**.
+7.	Click **Reveal Config Vars** and enter **port** into the **Key** box and **8000** into the **Value** box and click the **Add** button.
+8.	Next, scroll down to the Buildpack section click **Add Buildpack** select **python** and click **Save Changes**.
+9.	Repeat step 8 to add **node.js**.
+o	**Note:** The Buildpacks must be in the correct order. If not click and drag them to move into the correct order.
+10.	Scroll to the top of the page and now choose the **Deploy** tab.
+11.	Select **Github** as the deployment method.
+12.	Confirm you want to connect to GitHub.
+13.	Search for the repository name and click the connect button.
+14.	Scroll to the bottom of the deploy page and select preferred deployment type:
+
+* Click either **Enable Automatic Deploys** for automatic deployment when you push updates to Github.
+
+* Select the correct branch for deployment from the drop-down menu and click **Deploy Branch** for manual deployment.
+
+
+## Credits  
+
+Some tutorials and resources which I used for guidance in coding this project are:
+
+*  A [Youtube Tutorial video](https://www.youtube.com/watch?v=IH4tog2DHt4) perfectly captured the idea of what I was trying to implement and code from this tutorial was borrowed for this project.
+
+*  The Love Sandwiches 05 tutorial video was helpful in recalling how to connect the API to the project code.
+
+*  The Love Sandwiches 05 tutorial video was helpful in recalling how to connect the API to the project code.
+
+*  [Print Colors in Python terminal](https://www.geeksforgeeks.org/print-colors-python-terminal/)
+
+*  [Pyfiglet in Python](https://www.codespeedy.com/pyfiglet-in-python/)
+
+*  [Python | ASCII Art Using pyfiglet Module](https://www.codespeedy.com/pyfiglet-in-python/)
+
+*  [Python Dictionary Comprehension](https://www.geeksforgeeks.org/python-dictionary-comprehension/)
+
+*  [Python Dictionary Comprehension](https://www.programiz.com/python-programming/dictionary-comprehension)
+
+## Acknowledgement
+
+I am particularly grateful for the advice and support of my Mentor, Daisy, who was of tremendous assistance in guiding me through the grey areas of the project.

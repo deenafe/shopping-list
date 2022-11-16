@@ -23,7 +23,9 @@ def welcome():
     """
     Welcomes the customer to the online store.
     """
-    welcome_to_store = pyfiglet.figlet_format("Welcome  to Deen's  Store", font="standard", justify="center")
+    welcome_to_store = pyfiglet.figlet_format("Welcome  to" +
+                                              " Deen's Store",
+                                              justify="center")
     print(welcome_to_store)
 
     customer_name = input("Please enter your name:\n ")
@@ -99,7 +101,7 @@ def shopping_items(available, proceed):
     shopping_cart = {}
     while proceed:
         add_items = input("Add items:\n ")
- 
+
         if add_items.title() in available:
             try:
                 add_quantity = int(input(f'How many {add_items.title()}'
@@ -109,7 +111,7 @@ def shopping_items(available, proceed):
                 print(Style.RESET_ALL)
                 add_quantity = int(input('Please only input a number' +
                                          ' like 1,2,3,4 etc.:\n'))
-                
+
             print("\n")
             for key, value in available.items():
                 available[key] = float(value)
@@ -129,11 +131,11 @@ def shopping_items(available, proceed):
                              " available in our store\n""")
             print(Style.RESET_ALL)
 
-        proceed = input("Do you wish to add more items (YES/NO):\n ")
+        proceed = str(input("Do you wish to add more items (YES/NO):\n "))
         if proceed.upper() == "NO":
             print("\n")
             print("You have finished adding items to your shopping cart\n")
-            break 
+            break
 
     return shopping_cart
 
