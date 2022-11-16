@@ -123,9 +123,18 @@ With each item selection, the user is also required to state the quantity they w
 
 ### Future Development & Features Left to Implement
 
-* When the user opts to stop adding items to their shopping cart by entering NO to the YES or NO input request, instead of proceeding to calculate their final bill, I would like to have another prompt message printed to the user, asking the user if they are sure they are done with adding items with another YES or NO input request. To reconfirm they wish to quit, they should input NO and if they still want to continue adding items they can input YES. This reconfirmation prompt message will allow the user to reconsider if they wish to add more items before checking out to the bill summary.
+* When the user opts to stop adding items to their shopping cart by entering NO to the YES or NO input request, instead of proceeding to calculate their final bill, I would like to have another prompt message printed to the user, asking the user if they are sure they are done with adding items with another YES or NO input request. To reconfirm if they wish to quit, they should input NO and if they still want to continue adding items they can input YES. This prompt message will allow the user to reconsider if they wish to add more items before checking out to the bill summary.
 
-* Every store owner will want to have records of goods sold, so it would be very useful to have data of the from the bill summary posted to a Google spreadsheet, with following details in the first row of the worksheet: Customer Name, Item Bought, Quantity Bought, Amount, Date. This information would be very helpful to the store owner/management.
+* Every store owner will want to have records of goods sold, so it would be very useful to have data from the bill summary posted to a Google spreadsheet, to be populated with the following details as headers in the first row of the worksheet: 
+
+   * Customer Name
+   * Item Bought
+   * Quantity Bought
+   * Amount
+   * Date 
+
+This information would be very helpful to the store owner/management.
+
 
 **Flow Control**
 
@@ -159,9 +168,26 @@ This was used to add colour to fonts and provide visual notification to the user
 
 This was used to create the Flowchart.
 
-*   Windows Sniiping tool.
+*   Windows Snipping tool.
 
 This was used to screenshot and save images of the running program and flow chart. 
+
+
+## Testing
+*   Methods such as print() as the code developed was used to check for errors.  This helped check that for loops, arguments passed to functions and function return values were working as expected.
+
+*   Errors or warnings were such as indentation errors, lines too long or extra space issues, traceback errors etc. were fixed as the code for the program was being written. This helped keep the code clean and readable.
+
+*   The inputs were tested to ensure user inputs would be handled correctly and appropriate feedback to the user was displayed on screen.  The Features Section above sheds light on how the user inputs were handled and the following actions were taken to test the inputs
+
+    *   Customer Name:
+    This accept any input of characters except blanks. The enter key was pressed without typing in anything to the input request to ensure error was caught and handled appropriately.
+
+    *   Start Shopping:
+    To test the start shopping input, a random word other than YES or NO was inputted, then a blank by pressing the enter key without entering a word. This was done to ensure error is caught and handled appropriately.   
+
+    *   Add Items:
+    To test the add items input, a blank is inputted by pressing the enter key without entering a word. Then a random word was entered to ensure errors were caught and handled appropriately.
 
 
 

@@ -103,7 +103,7 @@ def shopping_items(available, proceed):
         if add_items.title() in available:
             add_quantity = int(input(f'How many {add_items.title()}'
                                      ' do you want to purchase'
-                                     ' (Please input numbers only):\n '))
+                                     ' (Please input numbers only):\n '))              
             print("\n")
             for key, value in available.items():
                 available[key] = float(value)
@@ -123,11 +123,27 @@ def shopping_items(available, proceed):
                              " available in our store\n""")
             print(Style.RESET_ALL)
 
-        proceed = input("Do you wish to add more items (YES/NO):\n ")
-        if proceed.upper() == "NO":
+        add_more = input("Do you wish to add more items (YES/NO):\n ")
+        if add_more.upper() == "NO":
             print("\n")
             print("You have finished adding items to your shopping cart\n")
             break
+        elif add_more == "":
+            print(Fore.RED + "Please enter either YES or NO")
+            print(Style.RESET_ALL)
+            print("\n")
+            proceed = input("Do you wish to add more items (YES/NO):\n ")
+        else:
+            print(Fore.RED + "Please enter either YES or NO")
+            print(Style.RESET_ALL)
+            print("\n")
+            proceed = input("Do you wish to add more items (YES/NO):\n ")
+
+
+        # if proceed.upper() == "NO":
+        #     print("\n")
+        #     print("You have finished adding items to your shopping cart\n")
+        #     break
 
     return shopping_cart
 
