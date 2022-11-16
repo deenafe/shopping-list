@@ -87,7 +87,13 @@ With each item selection, the user is also required to state the quantity they w
 
 * Any added item is checked for in-store availability and if available, the user is asked to input the quantity they wish to purchase for the added item.
 
+* If a user inputs a quantity that is not a number or simply presses enter without entering any input value, an error message highlighted in red is printed informing the user they entered a Non-Number and asks the user to re-enter a number giving an examples of a number entry.
+
 * Upon inputting the quantity for a selected item, the user is asked if they wish to continue shopping by a YES or NO input to add another item. If the type in YES they get prompted to add an item, then quantity for the entered item.
+
+![](/assets/images/non_number_quantity.png)
+
+![](/assets/images/blank_number_quantity.png)
 
 ![](/assets/images/add_quantity.png)
 
@@ -188,6 +194,9 @@ This was used to screenshot and save images of the running program and flow char
 
     *   Add Items:
     To test the add items input, a blank is inputted by pressing the enter key without entering a word. Then a random word was entered to ensure errors were caught and handled appropriately.
+
+    *  Add Quantity:
+    To test the add quantity input, a blank is inputted by pressing the enter key without entering a word. Then a random alphabet or word was entered to ensure errors were caught and handled appropriately.
 
 
 

@@ -99,27 +99,27 @@ def shopping_items(available, proceed):
     shopping_cart = {}
     while proceed:
         add_items = input("Add items:\n ")
-
+ 
         if add_items.title() in available:
-            # add_quantity = input(f'How many {add_items.title()}'
-            #                      ' do you want to purchase'
-            #                      ' (Please input numbers only):\n ')
             try:
-                add_quantity = int(input('Please enter a positive number:\n'))
+                add_quantity = int(input(f'How many {add_items.title()}'
+                                         ' do you want to purchase:\n'))
             except ValueError:
-                print(f'You entered a Non-Number.')
-                add_quantity = int(input('Please enter a positive number:\n'))
+                print(Fore.RED + 'You entered a Non-Number.')
+                print(Style.RESET_ALL)
+                add_quantity = int(input('Please only input a number' +
+                                         ' like 1,2,3,4 etc.:\n'))
                 
-            # print("\n")
-            # for key, value in available.items():
-            #     available[key] = float(value)
-            # shopping_cart.update(
-            #     {add_items:
-            #         {"Quantity": add_quantity,
-            #          "Subtotal": available[add_items.title()] *
-            #             add_quantity}
-            #      }
-            # )
+            print("\n")
+            for key, value in available.items():
+                available[key] = float(value)
+            shopping_cart.update(
+                {add_items:
+                    {"Quantity": add_quantity,
+                     "Subtotal": available[add_items.title()] *
+                        add_quantity}
+                 }
+            )
         elif add_items == "":
             print(Fore.RED + """You didn't add any items.
                   Please select an item\n""")
