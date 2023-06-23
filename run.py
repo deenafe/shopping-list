@@ -71,34 +71,24 @@ def proceed_shopping():
     """
     Request input from user to start or exit shopping.
     """
-    start_shopping = input("\n\nWould you like to start " + 
+    start_shopping = input("\n\nWould you like to start " +
                            "shopping now:(YES/NO)\n ")
-    while start_shopping.upper() != "YES" or "NO":
-          print(Fore.RED + "Please type in either YES or NO")
-          print(Style.RESET_ALL)
-          start_shopping = input("\n\nWould you like to start " + 
-                           "shopping now:(YES/NO)\n ")                 
-    # while True:
-    #     proceed_with_shopping = start_shopping.upper() == "YES"
-    #     print("\nPlease add the items you would like to purchase\n")
-    #     break
+    proceed_with_shopping = start_shopping.upper() == "YES"
 
-        # elif start_shopping.upper() == "":
-        #     print(Fore.RED + "Please type in either YES or NO")
-        #     print(Style.RESET_ALL)
-        #     start_shopping = input("\n\nWould you like to start " +
-        #                        "shopping now:(YES/NO)\n ")
+    while True:
+        if proceed_with_shopping:
+            print("\nPlease add the items you would like to purchase\n")
+            break
+        elif start_shopping.upper() == "NO":
+            print("Thanks for visiting our store." +
+                  " We hope you shop with us soon.\n")
+            quit()
 
-        # elif start_shopping.upper() == "NO":
-        #     print("Thanks for visiting our store." +
-        #           " We hope you shop with us soon.\n")
-        #     quit()
-        # else:
-        #     print(Fore.RED + """You entered an invalid word.
-        #           Please enter YES or NO""")
-        #     print(Style.RESET_ALL)
-        #     start_shopping = input("\n\nWould you like to start " +
-        #                        "shopping now:(YES/NO)\n ")
+        while start_shopping.upper() != "YES" or "NO":
+            print(Fore.RED + "Please type in either YES or NO")
+            print(Style.RESET_ALL)
+            start_shopping = input("\n\nWould you like to start " +
+                                   "shopping now:(YES/NO)\n ")
 
     return proceed_with_shopping
 
