@@ -30,7 +30,7 @@ def welcome():
     print(welcome_to_store)
 
     customer_name = input("Please enter your name:\n ")
-    if customer_name == "":
+    while customer_name == "":
         customer_name = input(Fore.RED + "Please enter a name:\n ")
         print(Style.RESET_ALL)
 
@@ -126,7 +126,7 @@ def shopping_items(available, proceed):
                         add_quantity}
                  }
             )
-        elif add_items == "":
+        if add_items == "":
             print(Fore.RED + """You didn't add any items.
                   Please select an item\n""")
             print(Style.RESET_ALL)
