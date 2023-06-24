@@ -66,19 +66,27 @@ def display_available(customer):
 
     return available_dict
 
+
 def validate_start_shopping_input():
-    start_shopping = input("\n\nWould you like to start " +
-                           "shopping now:(YES/NO)\n ")
+    while True:
+        choice = input('Would you like to start shopping now: (YES/NO)\n ')
+        if choice.upper() != "YES" and choice.upper() != "NO":
+            print(Fore.RED + "You entered an invalid answer." +
+                             " Please enter YES or NO")
+            print(Style.RESET_ALL)
+            continue
+        else:
+            break
+    if choice.upper() == "YES":
+        print(f'You have chosen YES')
+        return choice
+    elif choice.upper() == "NO":
+        print("Thanks for visiting our store." +
+              " We hope you shop with us soon.\n")
+        exit()
 
-    while start_shopping.upper() != "YES" or "NO":
-        print(Fore.RED + "Please type in either YES or NO")
-        print(Style.RESET_ALL)
-        start_shopping = input("\n\nWould you like to start " +
-                               "shopping now:(YES/NO)\n ")  
 
-    return start_shopping                                                
-
-def proceed_shopping():
+def proceed_shopping(start_or_exit):
     """
     Request input from user to start or exit shopping.
     """
@@ -89,18 +97,18 @@ def proceed_shopping():
     #     print(Fore.RED + "Please type in either YES or NO")
     #     print(Style.RESET_ALL)
     #     start_shopping = input("\n\nWould you like to start " +
-    #                            "shopping now:(YES/NO)\n ")                       
+    #                            "shopping now:(YES/NO)\n ")             
 
-    # if start_shopping.upper() == "YES":
-    #     proceed_with_shopping = start_shopping
-    #     print("\nPlease add the items you would like to purchase\n")
-    #     break
-    # elif start_shopping.upper() == "NO":
+    if start_or_exit.upper() == "YES":
+        proceed_with_shopping = start_or_exit
+        print("\nPlease add the items you would like to purchase\n")
+        # break
+    # elif start_or_exit.upper() == "NO":
     #     print("Thanks for visiting our store." +
     #           " We hope you shop with us soon.\n")
     #     quit()    
 
-    # return proceed_with_shopping
+    return proceed_with_shopping
 
 
 def shopping_items(available, proceed):
