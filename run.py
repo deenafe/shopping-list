@@ -1,3 +1,4 @@
+
 """ API for Google Sheets."""
 import gspread
 from google.oauth2.service_account import Credentials
@@ -68,6 +69,10 @@ def display_available(customer):
 
 
 def validate_start_shopping_input():
+    """
+    Check for validity of user input to start or exit shopping.
+    """
+
     while True:
         choice = input('Would you like to start shopping now: (YES/NO)\n ')
         if choice.upper() != "YES" and choice.upper() != "NO":
@@ -78,7 +83,6 @@ def validate_start_shopping_input():
         else:
             break
     if choice.upper() == "YES":
-        print(f'You have chosen YES')
         return choice
     elif choice.upper() == "NO":
         print("Thanks for visiting our store." +
@@ -86,29 +90,16 @@ def validate_start_shopping_input():
         exit()
 
 
-def proceed_shopping(start_or_exit):
-    """
-    Request input from user to start or exit shopping.
-    """
-    # start_shopping = input("\n\nWould you like to start " +
-    #                        "shopping now:(YES/NO)\n ")
+# def proceed_shopping(start_or_exit):
+#     """
+#     Request input from user to start or exit shopping.
+#     """
 
-    # while start_shopping.upper() != "YES" or "NO":
-    #     print(Fore.RED + "Please type in either YES or NO")
-    #     print(Style.RESET_ALL)
-    #     start_shopping = input("\n\nWould you like to start " +
-    #                            "shopping now:(YES/NO)\n ")             
+#     if start_or_exit.upper() == "YES":
+#         proceed_with_shopping = start_or_exit
+#         print("\nPlease add the items you would like to purchase\n")
 
-    if start_or_exit.upper() == "YES":
-        proceed_with_shopping = start_or_exit
-        print("\nPlease add the items you would like to purchase\n")
-        # break
-    # elif start_or_exit.upper() == "NO":
-    #     print("Thanks for visiting our store." +
-    #           " We hope you shop with us soon.\n")
-    #     quit()    
-
-    return proceed_with_shopping
+#     return proceed_with_shopping
 
 
 def shopping_items(available, proceed):
@@ -121,49 +112,97 @@ def shopping_items(available, proceed):
     """
     shopping_cart = {}
     while proceed:
-        add_items = input("Add items:\n ")
-
-        if add_items.title() in available:
-            try:
-                add_quantity = int(input(f'How many {add_items.title()}'
-                                         ' do you want to purchase:\n'))
-            except ValueError:
-                print(Fore.RED + 'You entered a Non-Number. ')
-                print(Style.RESET_ALL)
-                add_quantity = int(input('Please only input a number' +
-                                         ' like 1,2,3,4 etc.:\n'))
-
-            print("\n")
+        print("\nPlease add the items you would like to purchase\n")
+        items = input("Add Items:\n ")
+        if items.title() in available:
+            quantity = int(input(f'How many {items.title()} do you wish to purchase: \n'))
             for key, value in available.items():
                 available[key] = float(value)
-            shopping_cart.update(
-                {add_items:
-                    {"Quantity": add_quantity,
-                     "Subtotal": available[add_items.title()] *
-                        add_quantity}
-                 }
-            )
-        if add_items == "":
-            print(Fore.RED + """You didn't add any items.
-                  Please select an item\n""")
-            print(Style.RESET_ALL)
-            add_items = input("Add items:\n ")
+                shopping_cart.update(
+                    {items:
+                    {"Quantity": quantity,
+                     "Subtotal": available[items.title()] *
+                        quantity}
+                    }
+                )
+            print(shopping_cart)
         else:
-            print(Fore.RED + "The item selected is not"
-                             " available in our store\n""")
-            print(Style.RESET_ALL)
-            add_items = input("Add items:\n ")
+            print(Fore.RED + "Your entry is not available in store," +
+                             " Please check the list of available items ")
+            print(Style.RESET_ALL) 
+        proceed = input("Do you wish to add more items (YES/NO):")
 
-        proceed = str(input("Do you wish to add more items (YES/NO):\n "))
-        if proceed.upper() == "NO":
-            print("\n")
-            print("You have finished adding items to your shopping cart\n")
-            break
+    # elif proceed == "NO":
+    #     print("\n")
+
+
+
+        #     print(Fore.RED + "Your entry is not available in store," +
+        #                      " Please check the list of available items ")
+        #     print(Style.RESET_ALL)   
+        #     items = input("Add Items:\n ")
+        #     # continue
+        # else:
+        #     break
+
+
+
+        # try:
+        #     quantity = int(input(f'How many {items.title()} do you wish to purchase: \n'))  
+        #     break
+        # except ValueError:
+        #     print(Fore.RED + 'You entered a Non-Number. ')
+        #     print(Style.RESET_ALL)
+        #     quantity = int(input(f'How many {items.title()} do you wish to purchase: \n')) 
+
+    
+
+    # shopping_cart = {}
+    # while proceed:
+    #     add_items = input("Add items:\n ")
+
+    #     if add_items.title() in available:
+    #         try:
+    #             add_quantity = int(input(f'How many {add_items.title()}'
+    #                                      ' do you want to purchase:\n'))
+    #         except ValueError:
+    #             print(Fore.RED + 'You entered a Non-Number. ')
+    #             print(Style.RESET_ALL)
+    #             add_quantity = int(input('Please only input a number' +
+    #                                      ' like 1,2,3,4 etc.:\n'))
+
+    #         print("\n")
+            # for key, value in available.items():
+            #     available[key] = float(value)
+            # shopping_cart.update(
+            #     {add_items:
+            #         {"Quantity": add_quantity,
+            #          "Subtotal": available[add_items.title()] *
+            #             add_quantity}
+            #      }
+            # )
+    #     if add_items == "":
+    #         print(Fore.RED + """You didn't add any items.
+    #               Please select an item\n""")
+    #         print(Style.RESET_ALL)
+    #         add_items = input("Add items:\n ")
+    #     else:
+    #         print(Fore.RED + "The item selected is not"
+    #                          " available in our store\n""")
+    #         print(Style.RESET_ALL)
+    #         add_items = input("Add items:\n ")
+
+    #     proceed = str(input("Do you wish to add more items (YES/NO):\n "))
+    #     if proceed.upper() == "NO":
+    #         print("\n")
+    #         print("You have finished adding items to your shopping cart\n")
+    #         break
 
     return shopping_cart
 
 
 def bill_summary(items_bought):
+    
     """
     Prints out summary of items and quantity bought.
     Prints out the subtotal for each items bought then it adds up
@@ -190,9 +229,9 @@ def main():
     """
     name_of_customer = welcome()
     available_in_store = display_available(name_of_customer)
-    check_start_shopping = validate_start_shopping_input()
-    proceed_to_shopping = proceed_shopping(check_start_shopping)
-    lists_of_items = shopping_items(available_in_store, proceed_to_shopping)
+    start_shopping = validate_start_shopping_input()
+    # proceed_to_shopping = proceed_shopping(check_start_shopping)
+    lists_of_items = shopping_items(available_in_store, start_shopping)
     bill_summary(lists_of_items)
 
 
