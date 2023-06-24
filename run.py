@@ -126,14 +126,17 @@ def shopping_items(available, proceed):
                     }
                 )
             print(shopping_cart)
+            proceed = input("Do you wish to add more items (YES/NO):")
+            if proceed.upper() == "NO":
+                print("You have finished shopping")
+                break
+            
         else:
             print(Fore.RED + "Your entry is not available in store," +
                              " Please check the list of available items ")
             print(Style.RESET_ALL) 
         proceed = input("Do you wish to add more items (YES/NO):")
 
-    # elif proceed == "NO":
-    #     print("\n")
 
 
 
