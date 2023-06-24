@@ -66,29 +66,39 @@ def display_available(customer):
 
     return available_dict
 
+def validate_start_shopping_input():
+    start_shopping = input("\n\nWould you like to start " +
+                           "shopping now:(YES/NO)\n ")
+
+    while start_shopping.upper() != "YES" or "NO":
+        print(Fore.RED + "Please type in either YES or NO")
+        print(Style.RESET_ALL)
+        start_shopping = input("\n\nWould you like to start " +
+                               "shopping now:(YES/NO)\n ")  
+
+    return start_shopping                                                
 
 def proceed_shopping():
     """
     Request input from user to start or exit shopping.
     """
-    start_shopping = input("\n\nWould you like to start " +
-                           "shopping now:(YES/NO)\n ")
-    proceed_with_shopping = start_shopping.upper() == "YES"
+    # start_shopping = input("\n\nWould you like to start " +
+    #                        "shopping now:(YES/NO)\n ")
 
-    while True:
-        if proceed_with_shopping:
+    # while start_shopping.upper() != "YES" or "NO":
+    #     print(Fore.RED + "Please type in either YES or NO")
+    #     print(Style.RESET_ALL)
+    #     start_shopping = input("\n\nWould you like to start " +
+    #                            "shopping now:(YES/NO)\n ")                       
+
+        if start_shopping.upper() == "YES":
+            proceed_with_shopping = start_shopping
             print("\nPlease add the items you would like to purchase\n")
             break
         elif start_shopping.upper() == "NO":
             print("Thanks for visiting our store." +
                   " We hope you shop with us soon.\n")
-            quit()
-
-        while start_shopping.upper() != "YES" or "NO":
-            print(Fore.RED + "Please type in either YES or NO")
-            print(Style.RESET_ALL)
-            start_shopping = input("\n\nWould you like to start " +
-                                   "shopping now:(YES/NO)\n ")
+            quit()    
 
     return proceed_with_shopping
 
@@ -110,7 +120,7 @@ def shopping_items(available, proceed):
                 add_quantity = int(input(f'How many {add_items.title()}'
                                          ' do you want to purchase:\n'))
             except ValueError:
-                print(Fore.RED + 'You entered a Non-Number.')
+                print(Fore.RED + 'You entered a Non-Number. ')
                 print(Style.RESET_ALL)
                 add_quantity = int(input('Please only input a number' +
                                          ' like 1,2,3,4 etc.:\n'))
@@ -129,10 +139,12 @@ def shopping_items(available, proceed):
             print(Fore.RED + """You didn't add any items.
                   Please select an item\n""")
             print(Style.RESET_ALL)
+            add_items = input("Add items:\n ")
         else:
             print(Fore.RED + "The item selected is not"
                              " available in our store\n""")
             print(Style.RESET_ALL)
+            add_items = input("Add items:\n ")
 
         proceed = str(input("Do you wish to add more items (YES/NO):\n "))
         if proceed.upper() == "NO":
