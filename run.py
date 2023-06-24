@@ -91,16 +91,16 @@ def proceed_shopping():
     #     start_shopping = input("\n\nWould you like to start " +
     #                            "shopping now:(YES/NO)\n ")                       
 
-        if start_shopping.upper() == "YES":
-            proceed_with_shopping = start_shopping
-            print("\nPlease add the items you would like to purchase\n")
-            break
-        elif start_shopping.upper() == "NO":
-            print("Thanks for visiting our store." +
-                  " We hope you shop with us soon.\n")
-            quit()    
+    # if start_shopping.upper() == "YES":
+    #     proceed_with_shopping = start_shopping
+    #     print("\nPlease add the items you would like to purchase\n")
+    #     break
+    # elif start_shopping.upper() == "NO":
+    #     print("Thanks for visiting our store." +
+    #           " We hope you shop with us soon.\n")
+    #     quit()    
 
-    return proceed_with_shopping
+    # return proceed_with_shopping
 
 
 def shopping_items(available, proceed):
@@ -182,7 +182,8 @@ def main():
     """
     name_of_customer = welcome()
     available_in_store = display_available(name_of_customer)
-    proceed_to_shopping = proceed_shopping()
+    check_start_shopping = validate_start_shopping_input()
+    proceed_to_shopping = proceed_shopping(check_start_shopping)
     lists_of_items = shopping_items(available_in_store, proceed_to_shopping)
     bill_summary(lists_of_items)
 
