@@ -110,9 +110,12 @@ def shopping_items(available, proceed):
     Calculates the subtotal for each item added
     Checkout from shopping after selecting all items needed
     """
+
     shopping_cart = {}
-    while proceed:
-        print("\nPlease add the items you would like to purchase\n")
+
+    print("\nPlease add the items you would like to purchase\n")
+
+    while True:
         items = input("Add Items:\n ")
         if items.title() in available:
             quantity = int(input(f'How many {items.title()} do you wish to purchase: \n'))
@@ -122,20 +125,31 @@ def shopping_items(available, proceed):
                     {items:
                     {"Quantity": quantity,
                      "Subtotal": available[items.title()] *
-                        quantity}
-                    }
+                      quantity}
+                    }  
                 )
-            print(shopping_cart)
-            proceed = input("Do you wish to add more items (YES/NO):")
-            if proceed.upper() == "NO":
-                print("You have finished shopping")
+            checkout = input("Do you wish to add more items (YES/NO):")
+            while checkout.upper() != "YES" and checkout.upper() != "NO":
+                print("Please enter YES or NO ")
+                checkout = input("Do you wish to add more items (YES/NO):")
+          
+            if checkout.upper() == "YES":
+                continue
+            elif checkout.upper() == "NO":
+                print("You have finished adding items to your shopping cart\n")
                 break
-            
+
         else:
             print(Fore.RED + "Your entry is not available in store," +
-                             " Please check the list of available items ")
-            print(Style.RESET_ALL) 
-        proceed = input("Do you wish to add more items (YES/NO):")
+            " Please check the list of available items ")
+            print(Style.RESET_ALL)
+
+
+
+
+
+    
+
 
 
 
