@@ -105,13 +105,11 @@ def shopping_items(available, proceed):
     while True:
         items = input("Add Items:\n ")
         if items.title() in available:
-            quantity = int(input(f'How many {items.title()} do you wish to purchase: '))
-            # try:
-            #     if isinstance(quantity, int):
-            #         continue
-            # except ValueError:
-            #     print("Please enter a number E.g.1,2,3,4,5...")
-            #     quantity = int(input(f'How many {items.title()} do you wish to purchase: '))
+            try:
+                quantity = int(input(f'How many {items.title()} do you wish to purchase: '))
+            except ValueError:
+                print("Please enter a number E.g.1,2,3,4,5...")
+                continue
 
             for key, value in available.items():
                 available[key] = float(value)
