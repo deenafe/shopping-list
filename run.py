@@ -127,11 +127,13 @@ def shopping_items(available, proceed):
                      }
                 )
             checkout = input(Fore.BLUE + "Do you wish to add" +
-                                         "more items (YES/NO): ")
+                                         " more items (YES/NO): ")
             print(Style.RESET_ALL)
             while checkout.upper() != "YES" and checkout.upper() != "NO":
                 print("Please enter YES or NO ")
-                checkout = input("Do you wish to add more items (YES/NO): ")
+                checkout = input(Fore.BLUE + "Do you wish to add " +
+                                             "more items (YES/NO): ")
+                print(Style.RESET_ALL)
 
             if checkout.upper() == "YES":
                 continue

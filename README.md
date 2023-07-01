@@ -227,23 +227,6 @@ This is the developer environment where the code for this project was written, a
   
     ![](/assets/images/handle_quantity_error.png)    
 
->
->  File "run.py", line 104, in shopping_items
->
->   add_quantity = int(input(f'How many {add_items.title()}'
->
-> ValueError: invalid literal for int() with base 10: 'w'
-
-
-    To resolve this, I used a try/except statement to handle the error and alert the user if a Non-number or blank Input is entered. Following the message alerting the user to the error, an Input request is made again, this time providing examples of a number.
-
-
-### Unfixed Bugs
-
-* Do you wish to add more items (YES/NO):
-    
-   * During testing, I discovered that if a blank is entered for this Input, it calaculates the total bill and prints the Bill Summary. As mentioned in the Features Left to Implement, the project code has to be updated to handle blank inputs to this request. 
-
 
 
 ### Validator Testing
