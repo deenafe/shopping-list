@@ -30,9 +30,9 @@ def welcome():
                                               justify="center")
     print(welcome_to_store)
 
-    customer_name = input("Please enter your name:\n ")
+    customer_name = input("Please enter your name: ")
     while customer_name == "":
-        customer_name = input(Fore.RED + "Please enter a name:\n ")
+        customer_name = input("Please enter a name: ")
         print(Style.RESET_ALL)
 
     return customer_name
@@ -61,7 +61,7 @@ def display_available(customer):
 
     available_dict = {}
     for items, prices in zip(available_items, available_prices):
-        print(f"{items} (Price: {prices})")
+        print(f"{items} (Price: {prices}) \n")
 
     available_dict = dict(zip(available_items, available_prices))
 
@@ -74,7 +74,7 @@ def validate_start_shopping_input():
     """
 
     while True:
-        choice = input('Would you like to start shopping now: (YES/NO)\n ')
+        choice = input('Would you like to start shopping now(YES/NO):\n ')
         if choice.upper() != "YES" and choice.upper() != "NO":
             print(Fore.RED + "You entered an invalid answer." +
                              " Please enter YES or NO")
@@ -100,30 +100,38 @@ def shopping_items(available, proceed):
     """
 
     shopping_cart = {}
-    print("\nPlease add the items you would like to purchase\n")
+    print("\nPlease add the items you would like to purchase")
 
     while True:
-        items = input("Add Items:\n ")
+        items = input("Add Items: ")
         if items.title() in available:
+            quantity = 0
             try:
-                quantity = int(input(f'How many {items.title()} do you wish to purchase: '))
+                qty = int(input(f'How many {items.title()} do ' +
+                                'you wish to purchase: '))
+                quantity += qty
             except ValueError:
-                print("Please enter a number E.g.1,2,3,4,5...")
+                print("\nRe-enter the item you would like to purchase ")
+                print(Fore.RED + "Please enter quantity of items" +
+                                 "as a number E.g.1,2,3,4,5...")
+                print(Style.RESET_ALL)
                 continue
 
             for key, value in available.items():
                 available[key] = float(value)
                 shopping_cart.update(
                     {items:
-                    {"Quantity": quantity,
-                     "Subtotal": available[items.title()] *
-                      quantity}
-                    }
+                     {"Quantity": quantity,
+                      "Subtotal": available[items.title()] * quantity
+                      }
+                     }
                 )
-            checkout = input("Do you wish to add more items (YES/NO):")
+            checkout = input(Fore.BLUE + "Do you wish to add" +
+                                         "more items (YES/NO): ")
+            print(Style.RESET_ALL)
             while checkout.upper() != "YES" and checkout.upper() != "NO":
                 print("Please enter YES or NO ")
-                checkout = input("Do you wish to add more items (YES/NO):")
+                checkout = input("Do you wish to add more items (YES/NO): ")
 
             if checkout.upper() == "YES":
                 continue
@@ -135,14 +143,6 @@ def shopping_items(available, proceed):
             print(Fore.RED + "Your entry is not available in store," +
                              " Please check the list of available items ")
             print(Style.RESET_ALL)
-
-        # try:
-        #     quantity = int(input(f'How many {items.title()} do you wish to purchase: \n'))
-        #     break
-        # except ValueError:
-        #     print(Fore.RED + 'You entered a Non-Number. ')
-        #     print(Style.RESET_ALL)
-        #     quantity = int(input(f'How many {items.title()} do you wish to purchase: \n'))
 
     return shopping_cart
 
@@ -176,7 +176,6 @@ def main():
     name_of_customer = welcome()
     available_in_store = display_available(name_of_customer)
     start_shopping = validate_start_shopping_input()
-    # proceed_to_shopping = proceed_shopping(check_start_shopping)
     lists_of_items = shopping_items(available_in_store, start_shopping)
     bill_summary(lists_of_items)
 

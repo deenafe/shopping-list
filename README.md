@@ -53,15 +53,13 @@ With each item selection, the user is also required to state the quantity they w
 
 * After going through the store's available items and prices, the user is then asked if they will like to start shopping by indicating YES or NO
 
-* If the user input is neither YES or NO, an error message highlighted in red is printed informing the user that an invalid word was entered. If the user simply presses enter without inputting YES or NO, an error message highlighted in red is printed asking the user to type in either YES or NO.
+* If the user input is neither YES or NO, an error message highlighted in red is printed informing the user that an invalid word was entered. If the user simply presses enter without inputting YES or NO, an error message highlighted in red is printed informing the user that an invalid answer was entered along with a request to type in either YES or NO.
 
 * If the user's answer is NO, then a message is printed thanking the user for visiting the store and imploring them to come back another time to shop at the store.
 
 ![](/assets/images/start_shopping.png)
 
-![](/assets/images/start_shopping_error1.png)
-
-![](/assets/images/start_shopping_error2.png)
+![](/assets/images/invalid_startshop.png)
 
 ![](/assets/images/start_shopping_no.png)
 
@@ -72,32 +70,27 @@ With each item selection, the user is also required to state the quantity they w
 
 * After a user agrees to start shopping by inputting YES, a message is printed asking the user to add the items they wish to purchase from the store. Then an input request is made to enter the first item they will like to purchase.
 
-* If a user simply presses enter without typing in any item, an error message highlighted in red is printed informing the user they didn't add any items. Then an input request is made to ask if the user wishes to add other items.
+* If a user simply presses enter without typing in any item, an error message highlighted in red is printed informing the user that the entry made is not available in the store, and referring the user to check the list of available items in store. Then another input request is made to add items they will like to purchase.
 
-* If a user enters an item that is not available in the store, an error message highlighted in red is printed informing the user that the added item is not available in the store. Then an input request is made to ask if the user wishes to add other items.
+* If a user enters an item that is not available in the store, an error message highlighted in red is printed informing the user that the added item is not available in the store. Then an input request is made to ask the user to add items.
 
 ![](/assets/images/add_items.png)
 
-![](/assets/images/add_items_empty.png)
-
-![](/assets/images/add_items_unavailable.png)
+![](/assets/images/invalid_additems.png)
 
 
 **Add Quantity Input:**
 
 * Any added item is checked for in-store availability and if available, the user is asked to input the quantity they wish to purchase for the added item.
 
-* If a user inputs a quantity that is not a number or simply presses enter without entering any input value, an error message highlighted in red is printed informing the user they entered a Non-Number and asks the user to re-enter a number giving an examples of a number entry.
+* If a user inputs a quantity that is not a number or simply presses enter without entering any input value, a printed request is made to user to re-enter the items they want to purchase and another error message highlighted in red is printed telling the user to input the quantity as a number with examples of a number entry.
 
 * Upon inputting the quantity for a selected item, the user is asked if they wish to continue shopping by a YES or NO input to add another item. If the type in YES they get prompted to add an item, then quantity for the entered item.
 
-![](/assets/images/non_number_quantity.png)
+![](/assets/images/invalid_quantity.png)
 
-![](/assets/images/blank_number_quantity.png)
+![](/assets/images/added_items.png)
 
-![](/assets/images/add_quantity.png)
-
-![](/assets/images/more_items.png)
 
 
 **Continue Shopping Feedback:**
@@ -131,12 +124,10 @@ With each item selection, the user is also required to state the quantity they w
 
 * When the user opts to stop adding items to their shopping cart by entering NO to the YES or NO input request, instead of proceeding to calculate their final bill, I would like to have another prompt message printed to the user, asking the user if they are sure they are done with adding items with another YES or NO input request. To reconfirm if they wish to quit, they should input NO and if they still want to continue adding items they can input YES. This prompt message will allow the user to reconsider if they wish to add more items before checking out to the bill summary.
 
-* The Input request to add more items to the shopping cart needs to be handle blank inputs such that any input that's not YES or NO would print an error and make another input request to the user to enter YES or NO, instead of proceeding to calculate the user's final bill. 
-
 * Every store owner will want to have records of goods sold, so it would be very useful to have data from the bill summary posted to a Google spreadsheet, to be populated with the following details as headers in the first row of the worksheet: 
 
    * Customer Name
-   * Item Bought
+   * Items Bought
    * Quantity Bought
    * Amount
    * Date 
@@ -216,9 +207,25 @@ This is the developer environment where the code for this project was written, a
 
 ### Identified Bugs
 
-* ValueError: invalid literal for int() with base 10:
+* Customer Name
 
-    * During testing, I discovered that the add_quantity Input would throw up an error and exit the program if a blank Input or Non-Number is entered.
+    * It was discovered that the application did not handle an empty/blank customer name input after 2 attempts. To fix this problem, I added a while loop in the Welcome function to ensure the program will continously request for user input if the entry is blank. 
+
+    ![](/assets/images/handle_customer_name.png)
+
+* Start Shopping
+
+    * There was an issue with validating user input for the question 'Would you like to start shopping now (YES/NO)'. The application was terminating upon receiving an invalid or blank user input to this question. To fix this problem, I replaced the function handling this input and introduced a While True statement that checks if the answer is not YES or NO.  Any answer other than YES or NO would result in printing a message to the terminal informing user that an invalid answer was entered, with a request to enter either YES or NO. This message is printed continuously till a YES or NO answer is entered.   
+
+    ![](/assets/images/handle_start_shopping.png)
+
+* Quantity Error
+
+    * After a user inputs an item they wish to purchase, the application requests for the quantity of items to be purchased. The program can only function properly when the user enters a number (integer). However the application was not properly handling empty/invalid input to the quantity field, which led to termination of the application.
+
+    To fix this, I nested a try statement in a while True statement that first check if the added item is available in the store then proceed to request for the quantity. If the quantity is not an integer, it loops back to the request input for the item and quantity.  
+  
+    ![](/assets/images/handle_quantity_error.png)    
 
 >
 >  File "run.py", line 104, in shopping_items
